@@ -1,0 +1,6 @@
+# Build products from the Makefile
+firmware.elf
+firmware.bin
+*.o
+*.map
+*.d
