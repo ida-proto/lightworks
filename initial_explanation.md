@@ -1,5 +1,7 @@
 # Initial explanation
 
+This note describes the first freestanding blink, before the tree became a FreeRTOS lighting core. The files it names (`main.cpp`, `startup.s`, `linker.ld`, `stm32h743.hpp`, `Makefile`) are no longer the build. The current layout and the bench wiring are in `README.md`.
+
 The project is now freestanding C++. It still toggles PE1, and the startup code now does the three things a C++ program requires before `main`: copy `.data`, clear `.bss`, and run constructors. The build with `arm-none-eabi-g++` succeeded. `firmware.bin` is 360 bytes. Nothing was flashed to a board.
 
 `main.c` and the empty `stm32743xx.h` are gone. The sources are `Makefile`, `linker.ld`, `startup.s`, `stm32h743.hpp`, and `main.cpp`. The makefile compiles at `-O0` so each C++ operation is still visible as its own instructions.

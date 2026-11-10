@@ -4,3 +4,6 @@ firmware.bin
 *.o
 *.map
 *.d
+
+# CMake build trees (firmware and the host encoder test)
+build/
