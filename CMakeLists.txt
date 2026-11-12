@@ -27,7 +27,16 @@ add_executable(firmware
   ports/stm32h743/src/status_led.cpp
   ports/stm32h743/src/ws2815_spi_dma.cpp
   ports/stm32h743/src/freertos_hooks.cpp
+  ports/stm32h743/src/usart3_vcp.cpp
   ports/stm32h743/startup/startup_stm32h743xx.s
+  third_party/sculpture-bus/src/crc16.c
+  third_party/sculpture-bus/src/cobs.c
+  third_party/sculpture-bus/src/can_id.c
+  third_party/sculpture-bus/src/frame.c
+  third_party/sculpture-bus/src/decoder.c
+  third_party/sculpture-bus/src/msg.c
+  third_party/sculpture-bus/src/names.c
+  third_party/sculpture-bus/src/payload.c
   third_party/FreeRTOS-Kernel/tasks.c
   third_party/FreeRTOS-Kernel/queue.c
   third_party/FreeRTOS-Kernel/list.c
@@ -39,6 +48,7 @@ target_include_directories(firmware PRIVATE
   ports/stm32h743/include
   ports/stm32h743/src
   apps/nucleo_h743zi2
+  third_party/sculpture-bus/include
 )
 
 target_include_directories(firmware SYSTEM PRIVATE

@@ -23,6 +23,8 @@
 
 #define BOARD_CPU_HZ 240000000u
 #define BOARD_HCLK_HZ 120000000u
+/* clock.cpp leaves D2PPRE at reset (/1), so APB1 matches HCLK. USART3 uses that. */
+#define BOARD_APB1_HZ BOARD_HCLK_HZ
 #define BOARD_PLLQ_HZ 48000000u
 #define BOARD_SPI_PRESCALER 16u
 #define BOARD_SPI_HZ 3000000u

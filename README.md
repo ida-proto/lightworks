@@ -10,7 +10,8 @@ The first blink experiment is written up in `initial_explanation.md`. Those sour
 
 | Path | Role |
 |---|---|
-| `core/include/lightworks/` | `Rgb`, `Span`, `FrameBuffer`, `Ws2815Encoder`, `Control` |
+| `core/include/lightworks/` | `Rgb`, `Span`, `FrameBuffer`, `Ws2815Encoder`, `Control`, `Link` |
+| `third_party/sculpture-bus` | Shared sbus protocol, submodule |
 | `ports/stm32h743/` | Clock, vectors, FreeRTOS, SPI+DMA driver |
 | `apps/nucleo_h743zi2/` | Dim green frame at 30 Hz, LD2 heartbeat |
 | `tests/` | Host check of the encoder |
@@ -80,3 +81,9 @@ OpenOCD can do the same job:
 openocd -f interface/stlink.cfg -f target/stm32h7x.cfg \
   -c "program build/firmware.elf verify reset exit"
 ```
+
+## Roadmap
+
+The addressable LED type will become a choice. This board drives a WS2815 today. WS2812B, SK6812 RGBW, and APA102 (and the families that show up after those) each need their own encoder in front of the same pixel buffer. The effect task should keep filling `Rgb` samples and leave the wire format to the port.
+
+`feat/sculpture-bus` is the first cut of the shared bus on this node. It vendors the `sculpture-bus` protocol as a submodule, adds `Link` (COBS frames over whatever byte pipe the app names), and brings up USART3 on the ST-LINK virtual COM port: PD8 TX, PD9 RX, AF7, 115200 8N1. One heartbeat goes out that port at boot. The baud assumes APB1 is 120 MHz. That path is a skeleton and has not been scoped. `main` stays the LED demo until this branch is ready to merge.
