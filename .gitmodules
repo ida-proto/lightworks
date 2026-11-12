@@ -4,3 +4,6 @@
 [submodule "third_party/cmsis_device_h7"]
 	path = third_party/cmsis_device_h7
 	url = https://github.com/STMicroelectronics/cmsis_device_h7.git
+[submodule "third_party/sculpture-bus"]
+	path = third_party/sculpture-bus
+	url = http://100.106.90.53:3300/cybersteam/sculpture-bus.git
